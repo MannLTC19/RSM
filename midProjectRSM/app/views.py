@@ -10,3 +10,10 @@ def area_chart(request):
 
 def datatables(request):
     return render(request, "datatables.html")
+
+
+def form(request):
+    return render(request, "form1.html")
+
+def form2(request):
+    return render(request, "form2.html")
