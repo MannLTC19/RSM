@@ -17,3 +17,6 @@ def form(request):
 
 def form2(request):
     return render(request, "form2.html")
+
+def form3(request):
+    return render(request, "form3.html")

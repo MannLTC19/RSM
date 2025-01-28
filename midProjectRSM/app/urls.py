@@ -6,5 +6,6 @@ urlpatterns = [
     path("datatables", views.datatables, name="app-datatables"),
     path("form", views.form1, name="app-form1"),
     path("form2", views.form1, name="app-form2"),
+    path("form3", views.form1, name="app-form3"),
     path("", views.index, name="app-index")
 ]
