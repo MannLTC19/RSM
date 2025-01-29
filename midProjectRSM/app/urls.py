@@ -8,5 +8,5 @@ urlpatterns = [
     path("form2", views.form2, name="app-form2"),
     path("form3", views.form3, name="app-form3"),
     path("form4", views.form4, name="app-form4"),
-    path("", views.index, name="app-index")
+    path("index", views.index, name="app-index")
 ]
