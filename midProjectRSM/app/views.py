@@ -8,8 +8,8 @@ def area_chart(request):
     return render(request, "area_chart.html")
 
 
-def datatables(request):
-    return render(request, "datatables.html")
+def formlist(request):
+    return render(request, "form_list.html")
 
 
 def form(request):
