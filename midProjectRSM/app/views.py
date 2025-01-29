@@ -11,6 +11,8 @@ def area_chart(request):
 def formlist(request):
     return render(request, "form_list.html")
 
+def dashboard(request):
+    return render(request, "index.html")
 
 def form(request):
     return render(request, "form1.html")
