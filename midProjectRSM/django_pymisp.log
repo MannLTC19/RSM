@@ -1,0 +1,78 @@
+2025-01-30 12:13:32,407 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D0E8ADF620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:13:32,514 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:13:33,591 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000022C8F06F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:13:33,676 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:13:33,914 - INFO - Watching for file changes with StatReloader
+2025-01-30 12:16:14,385 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023F5AF3F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:16:14,486 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:16:15,376 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001742CF8F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:16:15,463 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:16:15,678 - INFO - Watching for file changes with StatReloader
+2025-01-30 12:16:54,981 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002928BBAF620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:16:55,085 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:16:55,996 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E6F52BF620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:16:56,080 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:16:56,302 - INFO - Watching for file changes with StatReloader
+2025-01-30 12:21:50,109 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D3ACB5F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:21:50,208 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:21:51,125 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001F3EBF5F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:21:51,209 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:21:51,427 - INFO - Watching for file changes with StatReloader
+2025-01-30 12:23:02,126 - INFO - C:\Bahan Kuliah\RSM\midProjectRSM\core\settings.py changed, reloading.
+2025-01-30 12:23:02,938 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024D8DB4F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:23:03,028 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:24:03,302 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000244B780F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:24:03,404 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:24:04,340 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002D8C799F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:24:04,442 - INFO - Executing Django command: manage.py runserver
+2025-01-30 12:24:04,697 - INFO - Watching for file changes with StatReloader
+2025-01-30 12:25:39,927 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CF6C2F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:25:39,935 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 32, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+2025-01-30 12:28:50,246 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000139D001B620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:28:50,254 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 32, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+2025-01-30 12:29:29,491 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002A88044B620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:29:29,498 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 32, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+2025-01-30 12:32:51,903 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001F83B39F620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:32:51,911 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 32, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+2025-01-30 12:33:01,099 - ERROR - Failed to connect to MISP: Unable to connect to MISP (https://your-misp-instance.com). Please make sure the API key and the URL are correct (http/https is required): HTTPSConnectionPool(host='your-misp-instance.com', port=443): Max retries exceeded with url: /servers/getVersion (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002275468B620>: Failed to resolve 'your-misp-instance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-01-30 12:33:01,106 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 32, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
