@@ -15,7 +15,7 @@
 
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #9cf3de;
             font-family: 'Arial', sans-serif;
         }
 
@@ -86,37 +86,37 @@
 
                 <div class="mb-3">
                     <label for="id_project_title">Project Title</label>
-                    <input type="text" class="form-control" name="project_title" maxlength="200" required id="id_project_title">
+                    <input type="text" class="form-control" name="project_title" maxlength="200" required id="id_project_title" placeholder="What is the title of the project?">
                 </div>
 
                 <div class="mb-3">
                     <label for="id_project_owner">Project Owner</label>
-                    <input type="text" class="form-control" name="project_owner" maxlength="200" required id="id_project_owner">
+                    <input type="text" class="form-control" name="project_owner" maxlength="200" required id="id_project_owner" placeholder="Who own this project">
                 </div>
 
                 <div class="mb-3">
                     <label for="id_process_scope">Process Scope</label>
-                    <textarea class="form-control" name="process_scope" required id="id_process_scope"></textarea>
+                    <textarea class="form-control" name="process_scope" required id="id_process_scope" placeholder="Explain the variables of the project"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_primary_threats">Primary Threats</label>
-                    <textarea class="form-control" name="primary_threats" required id="id_primary_threats"></textarea>
+                    <textarea class="form-control" name="primary_threats" required id="id_primary_threats" placeholder="What are the primary threats of the project"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_critical_assets">Critical Assets</label>
-                    <textarea class="form-control" name="critical_assets" required id="id_critical_assets"></textarea>
+                    <textarea class="form-control" name="critical_assets" required id="id_critical_assets" placeholder="Mention the critical assets of the project"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_vulnerabilities">Vulnerabilities</label>
-                    <textarea class="form-control" name="vulnerabilities" required id="id_vulnerabilities"></textarea>
+                    <textarea class="form-control" name="vulnerabilities" required id="id_vulnerabilities" placeholder="What are the vulnerabilities of the project"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_asset_description">Asset Description</label>
-                    <textarea class="form-control" name="asset_description" required id="id_asset_description"></textarea>
+                    <textarea class="form-control" name="asset_description" required id="id_asset_description" placeholder="Describe your assets"></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -153,17 +153,17 @@
 
                 <div class="mb-3">
                     <label for="id_residual_risk">Residual Risk</label>
-                    <input type="text" class="form-control" name="residual_risk" maxlength="50" required id="id_residual_risk">
+                    <input type="text" class="form-control" name="residual_risk" maxlength="50" required id="id_residual_risk" placeholder="What are the residual risk of the project">
                 </div>
 
                 <div class="mb-3">
                     <label for="id_existing_controls">Existing Controls</label>
-                    <textarea class="form-control" name="existing_controls" required id="id_existing_controls"></textarea>
+                    <textarea class="form-control" name="existing_controls" required id="id_existing_controls" placeholder="Mention existing controls in the project"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_additional_controls">Additional Controls</label>
-                    <textarea class="form-control" name="additional_controls" required id="id_additional_controls"></textarea>
+                    <textarea class="form-control" name="additional_controls" required id="id_additional_controls" placeholder="Are there any additional controls in the project?"></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -175,9 +175,10 @@
                         <option value="Annually">Annually</option>
                     </select>
                 </div>
-
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">Next</button>
+                    <a href="dashboard" class="btn btn-primary" target="_blank">
+                        Submit
+                    </a>    
                 </div>
             </form>
         </div>
