@@ -1,0 +1,9 @@
+2025-01-31 10:47:05,752 - CRITICAL - Django import failed. Check if Django is installed and virtualenv is activated.
+Traceback (most recent call last):
+  File "c:\Bahan Kuliah\RSM\midProjectRSM\manage.py", line 20, in main
+    from django.core.management import execute_from_command_line
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+  File "C:\Bahan Kuliah\RSM\midProjectRSM\env\Lib\site-packages\django\utils\version.py", line 6, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
