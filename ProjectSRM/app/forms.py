@@ -1,7 +1,18 @@
 from django import forms
-from .models import RiskAssessment
+from .models import Project, Asset
 
-class RiskAssessmentForm(forms.ModelForm):
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['project_title', 'project_owner', 'process_scope', 'asset_description']
+        widgets = {
+            'project_title': forms.TextInput(attrs={'class': 'form-control'}),
+            'project_owner': forms.TextInput(attrs={'class': 'form-control'}),
+            'process_scope': forms.TextInput(attrs={'class': 'form-control'}),
+            'asset_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        }
+
+class AssetForm(forms.ModelForm):
     LIKELIHOOD_CHOICES = [
         ('very_low', 'Very Low'),
         ('low', 'Low'),
@@ -18,18 +29,27 @@ class RiskAssessmentForm(forms.ModelForm):
         ('very_high', 'Very High'),
     ]
 
-    likelihood = forms.ChoiceField(
-        choices=LIKELIHOOD_CHOICES,
-        widget=forms.RadioSelect,
-        label="Likelihood"
-    )
-    
-    impact = forms.ChoiceField(
-        choices=IMPACT_CHOICES,
-        widget=forms.RadioSelect,
-        label="Impact"
-    )
+    likelihood = forms.ChoiceField(choices=LIKELIHOOD_CHOICES, widget=forms.RadioSelect)
+    impact = forms.ChoiceField(choices=IMPACT_CHOICES, widget=forms.RadioSelect)
 
     class Meta:
-        model = RiskAssessment
-        fields = '__all__'  # Include all fields or specify which ones you want
+        model = Asset
+        fields = ['asset_name', 'asset_owner', 'primary_threats', 'asset_description', 'likelihood', 'impact']
+        widgets = {
+            'asset_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'asset_owner': forms.TextInput(attrs={'class': 'form-control'}),
+            'primary_threats': forms.Textarea(attrs={'class': 'form-control'}),
+            'asset_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        }
+
+# Legacy form - can be removed if not needed
+class RiskAssessmentForm(forms.ModelForm):
+    class Meta:
+        model = Project  # Changed from RiskAssessment to Project
+        fields = ['project_title', 'project_owner', 'process_scope', 'asset_description']
+        widgets = {
+            'project_title': forms.TextInput(attrs={'class': 'form-control'}),
+            'project_owner': forms.TextInput(attrs={'class': 'form-control'}),
+            'process_scope': forms.TextInput(attrs={'class': 'form-control'}),
+            'asset_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        }

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import RiskAssessmentForm
+from .forms import RiskAssessmentForm, ProjectForm, AssetForm
 from .virustotal_service import scan_url, get_url_report
 from .models import VTResult
 
@@ -15,26 +15,60 @@ def formlist(request):
     return render(request, "form_list.html")
 
 def dashboard(request):
-    return render(request, "index.html")
+    try:
+        latest_result = VTResult.objects.latest('created_at')
+        
+        # Prepare chart data if result exists
+        chart_data = {
+            'labels': ['Malicious', 'Suspicious', 'Harmless', 'Undetected', 'Timeout'],
+            'data': [
+                latest_result.malicious,
+                latest_result.suspicious,
+                latest_result.harmless,
+                latest_result.undetected,
+                latest_result.timeout
+            ],
+            'colors': ['#FF6384', '#FFCE56', '#36A2EB', '#4BC0C0', '#9966FF']
+        }
+        
+        return render(request, 'index.html', {'chart_data': chart_data})
+        
+    except VTResult.DoesNotExist:
+        # Return empty chart data if no results exist
+        chart_data = {
+            'labels': ['Malicious', 'Suspicious', 'Harmless', 'Undetected', 'Timeout'],
+            'data': [0, 0, 0, 0, 0],
+            'colors': ['#FF6384', '#FFCE56', '#36A2EB', '#4BC0C0', '#9966FF']
+        }
+        return render(request, 'index.html', {'chart_data': chart_data})
 
 def form(request):
     if request.method == 'POST':
-        form = RiskAssessmentForm(request.POST)
+        form = ProjectForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('app-dashboard')
+            project = form.save()
+            # Store project_id in session to link with asset
+            request.session['project_id'] = project.id
+            return redirect('app-form2')
     else:
-        form = RiskAssessmentForm()
+        form = ProjectForm()
     return render(request, 'form1.html', {'form': form})
 
 def form2(request):
     if request.method == 'POST':
-        form = RiskAssessmentForm(request.POST)
+        form = AssetForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('app-dashboard')
+            project_id = request.session.get('project_id')
+            if project_id:
+                asset = form.save(commit=False)
+                asset.project_id = str(project_id)  # Convert to string since it's not a ForeignKey anymore
+                asset.save(using='assets')  # Explicitly save to assets database
+                del request.session['project_id']
+                return redirect('app-dashboard')
+            else:
+                return redirect('app-form1')
     else:
-        form = RiskAssessmentForm()
+        form = AssetForm()
     return render(request, 'form2.html', {'form': form})
 
 def form3(request):
@@ -99,22 +133,3 @@ def virus_scan(request):
                 'error': f'Error scanning URL: {str(e)}'
             })
     return render(request, 'virus_scan.html')
-
-def dashboard(request):
-    # Ambil data terbaru dari MongoDB
-    latest_result = VTResult.objects.latest('created_at')
-    
-    # Siapkan data untuk Donut Chart
-    chart_data = {
-        'labels': ['Malicious', 'Suspicious', 'Harmless', 'Undetected', 'Timeout'],
-        'data': [
-            latest_result.malicious,
-            latest_result.suspicious,
-            latest_result.harmless,
-            latest_result.undetected,
-            latest_result.timeout
-        ],
-        'colors': ['#FF6384', '#FFCE56', '#36A2EB', '#4BC0C0', '#9966FF']
-    }
-    
-    return render(request, 'index.html', {'chart_data': chart_data})

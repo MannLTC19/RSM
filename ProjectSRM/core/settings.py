@@ -78,9 +78,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'srm',
+        'NAME': 'Projects',
+    },
+    'assets': {
+        'ENGINE': 'djongo', 
+        'NAME': 'Assets',
     }
 }
+
+DATABASE_ROUTERS = ['app.routers.DatabaseRouter']
 
 
 # Password validation
