@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Navigation tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #e2e8f0;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #4299e1;
+    color: white;
+}
+
+/* Content sections */
+.tab-content {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* FAQ styles */
+.faq-item {
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #4299e1;
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Guides styles */
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.guide-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card h3 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.guide-card p {
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.guide-card a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+/* Contact form styles */
+.contact-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #3182ce;
+}
+
+/* Quick links styles */
+.quick-links {
+    margin-top: 3rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quick-links h2 {
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.links-grid a {
+    color: #4299e1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.links-grid a:hover {
+    color: #3182ce;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .nav-tabs {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .guide-card {
+        margin-bottom: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>How can we help you?</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for help...">
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="faq">FAQs</button>
+            <button class="tab-btn" data-tab="guides">Guides</button>
+            <button class="tab-btn" data-tab="contact">Contact Support</button>
+        </nav>
+
+        <!-- Content Sections -->
+        <main class="content">
+            <!-- FAQs Section -->
+            <section id="faq" class="tab-content active">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I reset my password?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Go to the login page and click 'Forgot Password'. Follow the instructions sent to your email.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I contact support?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            You can reach our support team through the contact form below or email us at support@example.com
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What payment methods do you accept?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept all major credit cards, PayPal, and bank transfers.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guides Section -->
+            <section id="guides" class="tab-content">
+                <h2>Help Guides</h2>
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <h3>Getting Started</h3>
+                        <p>Learn the basics of using our platform</p>
+                        <a href="/guides/getting-started">Read more →</a>
+                    </div>
+                    <div class="guide-card">
+                        <h3>Account Management</h3>
+                        <p>How to manage your account settings</p>
+                        <a href="/guides/account">Read more →</a>
+                    </div>
+                    <div class="guide-card">
+                        <h3>Advanced Features</h3>
+                        <p>Discover our advanced features and tools</p>
+                        <a href="/guides/advanced">Read more →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Support Section -->
+            <section id="contact" class="tab-content">
+                <h2>Contact Support</h2>
+                <form id="supportForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issueType">Issue Type</label>
+                        <select id="issueType">
+                            <option>Technical Issue</option>
+                            <option>Billing Question</option>
+                            <option>Feature Request</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Quick Links -->
+        <footer class="quick-links">
+            <h2>Quick Links</h2>
+            <div class="links-grid">
+                <a href="#">Documentation</a>
+                <a href="#">Video Tutorials</a>
+                <a href="#">Community Forum</a>
+                <a href="#">Status Page</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab switching functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding content
+            button.classList.add('active');
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // FAQ accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Toggle active class on clicked item
+            item.classList.toggle('active');
+            
+            // Update toggle icon
+            const icon = item.querySelector('.toggle-icon');
+            icon.textContent = item.classList.contains('active') ? '−' : '+';
+        });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const faqQuestions = document.querySelectorAll('.faq-question h3');
+    const guideCards = document.querySelectorAll('.guide-card');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        // Search FAQs
+        faqQuestions.forEach(question => {
+            const faqItem = question.closest('.faq-item');
+            const questionText = question.textContent.toLowerCase();
+            faqItem.style.display = questionText.includes(searchTerm) ? 'block' : 'none';
+        });
+
+        // Search Guides
+        guideCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            card.style.display = 
+                title.includes(searchTerm) || description.includes(searchTerm) 
+                    ? 'block' 
+                    : 'none';
+        });
+    });
+
+    // Contact form submission
+    const contactForm = document.getElementById('supportForm');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get form values
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            issueType: document.getElementById('issueType').value,
+            message: document.getElementById('message').value
+        };
+
+        // Here you would typically send the form data to your server
+        console.log('Form submitted:', formData);
+        
+        // Show success message (in a real application, you'd want to handle this better)
+        alert('Thank you for your message. We will get back to you soon!');
+        
+        // Reset form
+        contactForm.reset();
+    });
+
+    // Add smooth scrolling to all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+    </script>
+</body>
+</html>
