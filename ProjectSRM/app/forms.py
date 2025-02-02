@@ -14,19 +14,19 @@ class ProjectForm(forms.ModelForm):
 
 class AssetForm(forms.ModelForm):
     LIKELIHOOD_CHOICES = [
-        ('very_low', 'Very Low'),
-        ('low', 'Low'),
-        ('medium', 'Medium'),
-        ('high', 'High'),
-        ('very_high', 'Very High'),
+        ('1', 'Very Low'),
+        ('2', 'Low'),
+        ('3', 'Medium'),
+        ('4', 'High'),
+        ('5', 'Very High'),
     ]
 
     IMPACT_CHOICES = [
-        ('very_low', 'Very Low'),
-        ('low', 'Low'),
-        ('medium', 'Medium'),
-        ('high', 'High'),
-        ('very_high', 'Very High'),
+        ('1', 'Very Low'),
+        ('2', 'Low'),
+        ('3', 'Medium'),
+        ('4', 'High'),
+        ('5', 'Very High'),
     ]
 
     likelihood = forms.ChoiceField(choices=LIKELIHOOD_CHOICES, widget=forms.RadioSelect)
