@@ -41,15 +41,3 @@ class AssetForm(forms.ModelForm):
             'primary_threats': forms.Textarea(attrs={'class': 'form-control'}),
             'asset_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
         }
-
-# Legacy form - can be removed if not needed
-class RiskAssessmentForm(forms.ModelForm):
-    class Meta:
-        model = Project  # Changed from RiskAssessment to Project
-        fields = ['project_title', 'project_owner', 'process_scope', 'asset_description']
-        widgets = {
-            'project_title': forms.TextInput(attrs={'class': 'form-control'}),
-            'project_owner': forms.TextInput(attrs={'class': 'form-control'}),
-            'process_scope': forms.TextInput(attrs={'class': 'form-control'}),
-            'asset_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
-        }

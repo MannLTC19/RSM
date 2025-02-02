@@ -9,9 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Simple DataTables -->
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 </head>
 <style>
   body {
@@ -40,23 +37,11 @@
   }
   .dashboard {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     padding: 20px;
-    margin: 20px;
     overflow-y: auto;
-    height: calc(100vh - 40px);
   }
-  .chart-container, .table-container, .risk-matrix-container {
-    flex: 1;
+  .chart-container {
     margin: 20px 0;
-  }
-  h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
   }
 </style>
 <body>
@@ -71,102 +56,136 @@
 
   <div class="dashboard">
     <h1>Dashboard</h1>
-    
-    <!-- Chart Section -->
+
+    <!-- Likelihood Bar Chart -->
     <div class="chart-container">
-      <canvas id="myChart"></canvas>
+      <h3>Likelihood Distribution</h3>
+      <canvas id="likelihoodChart"></canvas>
     </div>
-    
-    <!-- Project List Section -->
-    <div class="table-container">
+
+    <!-- Impact Bar Chart -->
+    <div class="chart-container">
+      <h3>Impact Distribution</h3>
+      <canvas id="impactChart"></canvas>
+    </div>
+
+    <!-- Project List -->
+    <div class="container mt-4">
       <h2>Project List</h2>
-      <table class="table table-striped" id="projectTable">
-        <thead>
-          <tr>
-            <th>Project Name</th>
-            <th>Status</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Project A</td>
-            <td>Ongoing</td>
-            <td>2025-06-30</td>
-          </tr>
-          <tr>
-            <td>Project B</td>
-            <td>Completed</td>
-            <td>2024-12-15</td>
-          </tr>
-        </tbody>
+      <table class="table table-striped">
+          <thead class="table-dark">
+              <tr>
+                  <th>Project Title</th>
+                  <th>Owner</th>
+                  <th>Process Scope</th>
+                  <th>Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for project in projects %}
+              <tr>
+                  <td>{{ project.project_title }}</td>
+                  <td>{{ project.project_owner }}</td>
+                  <td>{{ project.process_scope }}</td>
+                  <td>{{ project.asset_description }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                  <td colspan="4" class="text-center">No projects available</td>
+              </tr>
+              {% endfor %}
+          </tbody>
       </table>
     </div>
-    
+
     <!-- Risk Assessment Matrix -->
-    <div class="risk-matrix-container">
+    <div class="container mt-4">
       <h2>Risk Assessment Matrix</h2>
-      <table class="table table-bordered text-center">
-        <thead>
-          <tr>
-            <th>Risk Level</th>
-            <th>Likelihood</th>
-            <th>Impact</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-danger">
-            <td>High</td>
-            <td>Very Likely</td>
-            <td>Severe</td>
-          </tr>
-          <tr class="table-warning">
-            <td>Medium</td>
-            <td>Possible</td>
-            <td>Moderate</td>
-          </tr>
-          <tr class="table-success">
-            <td>Low</td>
-            <td>Unlikely</td>
-            <td>Minor</td>
-          </tr>
-        </tbody>
+      <table class="table table-bordered">
+          <thead class="table-dark">
+              <tr>
+                  <th>Asset Name</th>
+                  <th>Owner</th>
+                  <th>Primary Threats</th>
+                  <th>Likelihood</th>
+                  <th>Impact</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for asset in assets %}
+              <tr>
+                  <td>{{ asset.asset_name }}</td>
+                  <td>{{ asset.asset_owner }}</td>
+                  <td>{{ asset.primary_threats }}</td>
+                  <td>{{ asset.get_likelihood_display }}</td>
+                  <td>{{ asset.get_impact_display }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                  <td colspan="5" class="text-center">No assets available</td>
+              </tr>
+              {% endfor %}
+          </tbody>
       </table>
     </div>
+
   </div>
 </div>
 
 <script>
-  // Chart.js Setup
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: 'Monthly Sales',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 2,
-        data: [65, 59, 80, 81, 56, 55],
-      }
-    ]
+  // Data from Django (Passed via Django Context)
+  const likelihoodData = {
+    "1": {{ likelihood_counts.1|default:0 }},
+    "2": {{ likelihood_counts.2|default:0 }},
+    "3": {{ likelihood_counts.3|default:0 }},
+    "4": {{ likelihood_counts.4|default:0 }},
+    "5": {{ likelihood_counts.5|default:0 }},
+};
+
+  const impactData = {
+    "1": {{ impact_counts.1|default:0 }},
+    "2": {{ impact_counts.2|default:0 }},
+    "3": {{ impact_counts.3|default:0 }},
+    "4": {{ impact_counts.4|default:0 }},
+    "5": {{ impact_counts.5|default:0 }},
   };
 
-  const config = {
-    type: 'line',
-    data: data,
+  // Likelihood Bar Chart
+  new Chart(document.getElementById('likelihoodChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Very Low', 'Low', 'Medium', 'High', 'Very High'],
+      datasets: [{
+        label: 'Likelihood Count',
+        backgroundColor: ['#d1e7dd', '#a3cfbb', '#6fb98f', '#2c786c', '#004445'],
+        data: Object.values(likelihoodData)
+      }]
+    },
     options: {
       responsive: true,
-      plugins: {
-        legend: { position: 'top' },
-      },
-    },
-  };
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
 
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
+  // Impact Bar Chart
+  new Chart(document.getElementById('impactChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Very Low', 'Low', 'Medium', 'High', 'Very High'],
+      datasets: [{
+        label: 'Impact Count',
+        backgroundColor: ['#f8d7da', '#f5c6cb', '#f1a7a9', '#d9534f', '#b71c1c'],
+        data: Object.values(impactData)
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
 </script>
+
 </body>
 </html>

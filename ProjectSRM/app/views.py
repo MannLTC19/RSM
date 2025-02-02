@@ -1,11 +1,23 @@
 from django.shortcuts import render, redirect
-from .forms import RiskAssessmentForm, ProjectForm, AssetForm
+from .forms import  ProjectForm, AssetForm
 from .virustotal_service import scan_url, get_url_report
 from .models import VTResult
+from .models import Project,Asset
+from .forms import ProjectForm, AssetForm
+
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    likelihood_counts = {str(i): Asset.objects.filter(likelihood=str(i)).count() for i in range(1, 6)}
+    impact_counts = {str(i): Asset.objects.filter(impact=str(i)).count() for i in range(1, 6)}
+
+    context = {
+        "projects": Project.objects.all(),
+        "assets": Asset.objects.all(),
+        "likelihood_counts": likelihood_counts,
+        "impact_counts": impact_counts
+    }
+    return render(request, "index.html", context)
 
 def area_chart(request):
     return render(request, "area_chart.html")
@@ -18,7 +30,6 @@ def dashboard(request):
     try:
         latest_result = VTResult.objects.latest('created_at')
         
-        # Prepare chart data if result exists
         chart_data = {
             'labels': ['Malicious', 'Suspicious', 'Harmless', 'Undetected', 'Timeout'],
             'data': [
@@ -61,8 +72,8 @@ def form2(request):
             project_id = request.session.get('project_id')
             if project_id:
                 asset = form.save(commit=False)
-                asset.project_id = str(project_id)  # Convert to string since it's not a ForeignKey anymore
-                asset.save(using='assets')  # Explicitly save to assets database
+                asset.project_id = str(project_id)
+                asset.save(using='assets')
                 del request.session['project_id']
                 return redirect('app-dashboard')
             else:
@@ -71,28 +82,23 @@ def form2(request):
         form = AssetForm()
     return render(request, 'form2.html', {'form': form})
 
-def form3(request):
-    if request.method == 'POST':
-        form = RiskAssessmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('app-dashboard')
-    else:
-        form = RiskAssessmentForm()
-    return render(request, 'form3.html', {'form': form})
-
-def form4(request):
-    if request.method == 'POST':
-        form = RiskAssessmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('app-dashboard')
-    else:
-        form = RiskAssessmentForm()
-    return render(request, 'form4.html', {'form': form})
-
 def help(request):
     return render(request, 'help.html')
+
+def update_project(request):
+    if request.method == "POST":
+        project = get_object_or_404(Project, id=request.POST["project_id"])
+        project.project_title = request.POST["title"]
+        project.project_owner = request.POST["owner"]
+        project.process_scope = request.POST["scope"]
+        project.save()
+        return JsonResponse({"success": True})
+
+def delete_asset(request):
+    if request.method == "POST":
+        asset = get_object_or_404(Asset, id=request.POST["asset_id"])
+        asset.delete()
+        return JsonResponse({"success": True})
 
 def virus_scan(request):
     if request.method == 'POST':
@@ -100,7 +106,6 @@ def virus_scan(request):
         try:
             scan_result = scan_url(url)
             if scan_result and 'data' in scan_result:
-                # Format the results for better display
                 stats = scan_result['data']['attributes']['stats']
                 results = {
                     'malicious': stats.get('malicious', 0),
@@ -109,8 +114,7 @@ def virus_scan(request):
                     'undetected': stats.get('undetected', 0),
                     'timeout': stats.get('timeout', 0),
                 }
-                
-                # Save results to MongoDB
+
                 vt_result = VTResult(
                     scanned_url=url,
                     malicious=results['malicious'],
